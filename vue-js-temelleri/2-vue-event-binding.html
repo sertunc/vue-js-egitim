@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Eğitimi</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- https://v2.vuejs.org/v2/guide/events.html#Event-Modifiers -->
+      <input type="text" @keypress="keyp($event)" />
+      <input type="text" @keypress.enter="keyp($event)" />
+      <button v-on:click="arttir()">arttır</button>
+      <button @click="arttir()">arttır2</button>
+      <p>{{sayi}}</p>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          sayi: 0,
+        },
+        methods: {
+          arttir() {
+            this.sayi++;
+          },
+          keyp(e) {
+            if (e.keyCode == 13) {
+              this.sayi += parseInt(e.target.value);
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
